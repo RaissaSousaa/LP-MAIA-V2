@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>MAIA – Conteúdo para redes sociais no tom da sua marca | NUVEN · IFCE</title>
+<meta name="description" content="O MAIA cria posts de texto e arte para redes sociais, sempre no tom e na identidade da sua marca. Você revisa, pede ajustes e publica. Desenvolvido pelo NUVEN · IFCE.">
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
+<style>
+:root{
+  /* Paleta MAIA — violeta do produto */
+  --g1:#2e1065;--g2:#6d28d9;--g3:#7c3aed;--g4:#8b5cf6;--g5:#c4b5fd;--g6:#ede9fe;
+  --gp:#f4f0ff;--gb:#e4d8fb;
+  --bg:#faf9fe;--white:#fff;--dark:#160a2b;--txt:#251838;--muted:#6d6088;
+  --bdr:#e9e3f5;--ink:#1c1530;
+  --sh:0 10px 40px rgba(46,16,101,.10);--shl:0 24px 60px rgba(46,16,101,.16);
+  --t:.25s cubic-bezier(.4,0,.2,1);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--bg);color:var(--txt);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+
+/* ── LOGO MAIA ── */
+.logo{display:inline-flex;align-items:center;gap:9px;text-decoration:none}
+.logo-img{height:30px;width:auto;display:block}
+.logo-mark{width:34px;height:34px;border-radius:10px;background:linear-gradient(140deg,var(--g3),#5b21b6 90%);display:flex;align-items:center;justify-content:center;position:relative;box-shadow:0 4px 12px rgba(109,40,217,.32)}
+.logo-mark svg{width:21px;height:21px}
+.logo-word{font-weight:800;font-size:1.22rem;color:var(--ink);letter-spacing:-.5px}
+.logo-word.on-dark{color:#fff}
+/* lockup no rodapé (fundo escuro) */
+.logo-lockup{display:inline-flex;align-items:center;gap:10px;text-decoration:none}
+.logo-lockup .lk-mark{height:32px;width:auto;display:block}
+.logo-lockup .lk-word{height:20px;width:auto;display:block}
+
+/* ── NAV ── */
+nav{position:fixed;top:0;width:100%;z-index:1000;background:rgba(250,249,254,.85);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border-bottom:1px solid transparent;display:flex;align-items:center;justify-content:space-between;padding:0 5.5%;height:66px;transition:all var(--t)}
+nav.up{background:rgba(255,255,255,.92);border-bottom-color:var(--bdr);box-shadow:0 2px 24px rgba(46,16,101,.06)}
+.nav-links{display:flex;gap:2px;list-style:none}
+.nav-links a{text-decoration:none;color:var(--muted);font-size:.85rem;font-weight:600;padding:7px 13px;border-radius:8px;transition:all var(--t)}
+.nav-links a:hover{color:var(--g2);background:var(--gp)}
+.nav-cta{background:var(--g3);color:#fff;padding:9px 20px;border-radius:10px;font-weight:700;font-size:.84rem;text-decoration:none;transition:all var(--t);box-shadow:0 4px 14px rgba(124,58,237,.3)}
+.nav-cta:hover{background:var(--g2);transform:translateY(-1px);box-shadow:0 6px 18px rgba(124,58,237,.4)}
+.hbg{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px}
+.hbg span{display:block;width:22px;height:2px;background:var(--g1);border-radius:2px}
+
+/* ── HERO (split) ── */
+#hero{position:relative;padding:130px 5.5% 84px;overflow:hidden;background:radial-gradient(ellipse 70% 60% at 78% 8%,#f0eaff 0%,transparent 55%),radial-gradient(ellipse 50% 50% at 8% 95%,#f6efff 0%,transparent 55%),var(--bg)}
+.hero-grid{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1.05fr 1fr;gap:56px;align-items:center}
+.h-badge{display:inline-flex;align-items:center;gap:8px;background:var(--white);border:1px solid var(--gb);border-radius:50px;padding:6px 15px;margin-bottom:22px;font-size:.72rem;font-weight:700;color:var(--g2);letter-spacing:.3px;box-shadow:0 2px 10px rgba(46,16,101,.05);animation:fu .7s ease both}
+.pdot{width:6px;height:6px;border-radius:50%;background:var(--g3);box-shadow:0 0 0 3px rgba(124,58,237,.18);animation:blink 2.2s infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.35}}
+@keyframes fu{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+.hero-h1{font-size:clamp(2.3rem,4vw,3.55rem);font-weight:800;color:var(--dark);line-height:1.06;letter-spacing:-1.4px;margin-bottom:20px;animation:fu .7s .1s ease both}
+.hero-h1 em{font-style:normal;background:linear-gradient(120deg,var(--g3),#c026d3);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.hero-p{font-size:1rem;color:var(--muted);line-height:1.78;margin-bottom:30px;max-width:520px;animation:fu .7s .22s ease both}
+.hero-btns{display:flex;gap:12px;flex-wrap:wrap;align-items:center;animation:fu .7s .36s ease both}
+.bw{display:inline-flex;align-items:center;gap:9px;background:var(--g3);color:#fff;padding:14px 26px;border-radius:12px;font-weight:700;font-size:.92rem;text-decoration:none;box-shadow:0 8px 22px rgba(124,58,237,.32);transition:all var(--t)}
+.bw:hover{transform:translateY(-2px);box-shadow:0 12px 30px rgba(124,58,237,.42);background:var(--g2)}
+.bghost{display:inline-flex;align-items:center;gap:8px;background:var(--white);color:var(--g2);padding:14px 24px;border-radius:12px;font-weight:700;font-size:.92rem;text-decoration:none;border:1px solid var(--gb);transition:all var(--t)}
+.bghost:hover{border-color:var(--g3);background:var(--gp)}
+.hero-mini{margin-top:38px;display:flex;flex-direction:column;align-items:flex-start;gap:14px;animation:fu .7s .5s ease both}
+.hero-mini > span{font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:1.2px;color:var(--muted);opacity:.75}
+.hero-mini-logos{display:flex;align-items:center;flex-wrap:wrap;gap:28px}
+.hero-mini-logos a{display:inline-flex;align-items:center;transition:all var(--t);border-radius:8px}
+.hero-mini-logos a:hover{transform:translateY(-2px)}
+.hero-mini-logos img{height:48px;width:auto;opacity:.8;filter:grayscale(.35);transition:all var(--t)}
+.hero-mini-logos a:hover img{opacity:1;filter:grayscale(0)}
+
+/* HERO product mockup */
+.hero-visual{position:relative;animation:fu .8s .3s ease both}
+.hero-visual::before{content:'';position:absolute;inset:-14% -8% -14% -8%;background:radial-gradient(circle at 60% 40%,rgba(124,58,237,.16),transparent 62%);filter:blur(20px);z-index:0}
+
+/* HERO — telas reais (login) empilhadas */
+.shot-stack{position:relative;z-index:1;padding:0 4% 7% 0}
+.shot-stack img{display:block;border-radius:14px;border:1px solid var(--bdr)}
+.shot-front{position:relative;z-index:2;width:100%;box-shadow:var(--shl)}
+.shot-back{position:absolute;z-index:1;width:70%;right:-2%;bottom:-2%;transform:rotate(4deg);box-shadow:var(--sh)}
+.mock{position:relative;z-index:1;background:var(--white);border:1px solid var(--bdr);border-radius:16px;box-shadow:var(--shl);overflow:hidden}
+.mock-bar{height:38px;background:#faf8ff;border-bottom:1px solid var(--bdr);display:flex;align-items:center;gap:7px;padding:0 14px}
+.mock-dot{width:10px;height:10px;border-radius:50%}
+.mock-dot.r{background:#ff5f57}.mock-dot.y{background:#febc2e}.mock-dot.g{background:#28c840}
+.mock-url{margin-left:12px;font-size:.68rem;color:var(--muted);background:#fff;border:1px solid var(--bdr);border-radius:6px;padding:3px 12px}
+.mock-body{display:flex;min-height:340px}
+.mock-side{width:52px;background:#fff;border-right:1px solid var(--bdr);display:flex;flex-direction:column;align-items:center;gap:6px;padding:14px 0}
+.mock-side .logo-mark{width:28px;height:28px;border-radius:8px;margin-bottom:8px}
+.mock-side .logo-mark svg{width:17px;height:17px}
+.mock-nav-i{width:30px;height:30px;border-radius:8px;display:flex;align-items:center;justify-content:center;color:#a99cc4}
+.mock-nav-i svg{width:16px;height:16px}
+.mock-nav-i.act{background:var(--gp);color:var(--g2)}
+.mock-main{flex:1;padding:16px 18px}
+.mock-steps{display:flex;align-items:center;gap:0;margin-bottom:16px}
+.mstep{width:24px;height:24px;border-radius:50%;background:#eee7fb;color:var(--g3);display:flex;align-items:center;justify-content:center;font-size:.68rem;font-weight:800;flex-shrink:0}
+.mstep.done{background:var(--g3);color:#fff}
+.mstep.now{background:var(--g3);color:#fff;box-shadow:0 0 0 4px rgba(124,58,237,.18)}
+.mline{flex:1;height:2px;background:#e9e3f5}
+.mline.on{background:var(--g3)}
+.mock-card{border:1px solid var(--bdr);border-radius:11px;overflow:hidden}
+.mock-img{height:96px;background:linear-gradient(120deg,#7c3aed,#c026d3);position:relative;overflow:hidden}
+.mock-img::after{content:'';position:absolute;inset:0;background:radial-gradient(circle at 30% 30%,rgba(255,255,255,.28),transparent 55%),linear-gradient(0deg,rgba(0,0,0,.15),transparent)}
+.mock-img .tagpost{position:absolute;top:9px;left:9px;z-index:1;background:rgba(255,255,255,.92);color:var(--g2);font-size:.58rem;font-weight:800;text-transform:uppercase;letter-spacing:.6px;padding:3px 8px;border-radius:5px}
+.mock-lines{padding:12px}
+.ml{height:8px;border-radius:5px;background:#efeaf7;margin-bottom:7px}
+.ml.w1{width:92%}.ml.w2{width:74%}.ml.w3{width:84%;background:#f3edfb}
+.mock-foot{display:flex;justify-content:space-between;align-items:center;margin-top:12px}
+.mock-pills{display:flex;gap:5px}
+.mpill{font-size:.56rem;font-weight:700;padding:3px 8px;border-radius:50px;background:var(--gp);color:var(--g2)}
+.mbtn{background:var(--g3);color:#fff;font-size:.62rem;font-weight:700;padding:6px 13px;border-radius:7px}
+.float-chip{position:absolute;z-index:2;background:#fff;border:1px solid var(--bdr);border-radius:11px;padding:9px 13px;box-shadow:var(--sh);display:flex;align-items:center;gap:9px;font-size:.72rem;font-weight:700;color:var(--dark)}
+.float-chip svg{width:15px;height:15px}
+.fc-a{top:-16px;right:-6%;animation:flo 4s ease-in-out infinite}
+.fc-b{bottom:8%;left:-9%;animation:flo 4.6s ease-in-out .6s infinite}
+.fc-ico{width:26px;height:26px;border-radius:7px;display:flex;align-items:center;justify-content:center;color:#fff}
+.fc-a .fc-ico{background:linear-gradient(135deg,#22c55e,#16a34a)}
+.fc-b .fc-ico{background:linear-gradient(135deg,var(--g3),#c026d3)}
+@keyframes flo{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
+
+/* ── SHARED ── */
+section{padding:90px 5.5%}
+.c{max-width:1160px;margin:0 auto}
+.hc{margin-bottom:48px}
+.hc.ctr{text-align:center}
+.hc.ctr .sp{max-width:560px;margin:0 auto}
+.tag{display:inline-flex;align-items:center;gap:7px;background:var(--gp);color:var(--g2);font-size:.68rem;font-weight:800;letter-spacing:1.3px;text-transform:uppercase;padding:5px 14px;border-radius:50px;margin-bottom:14px;border:1px solid var(--gb)}
+.sh{font-size:clamp(1.7rem,2.8vw,2.5rem);font-weight:800;color:var(--dark);line-height:1.12;margin-bottom:13px;letter-spacing:-.6px}
+.sh em{font-style:normal;color:var(--g2)}
+.sp{font-size:.96rem;color:var(--muted);line-height:1.8}
+.r{opacity:0;transform:translateY(22px);transition:opacity .6s ease,transform .6s ease}
+.r.on{opacity:1;transform:translateY(0)}
+
+/* ── BENTO (O que é) ── */
+#sobre{background:var(--white)}
+.bento{display:grid;grid-template-columns:1.4fr 1fr 1fr;grid-auto-rows:1fr;gap:15px}
+.bt{border:1px solid var(--bdr);border-radius:16px;padding:26px;transition:all var(--t);position:relative;overflow:hidden;background:var(--white)}
+.bt:hover{transform:translateY(-4px);box-shadow:var(--sh);border-color:var(--gb)}
+.bt-ico{width:44px;height:44px;border-radius:12px;background:var(--gp);display:flex;align-items:center;justify-content:center;margin-bottom:14px}
+.bt-ico svg{width:21px;height:21px;color:var(--g2)}
+.bt h3{font-size:1.02rem;font-weight:800;color:var(--dark);margin-bottom:7px}
+.bt p{font-size:.85rem;color:var(--muted);line-height:1.72}
+/* feature grande com comparativo */
+.bt-lg{grid-row:span 2;background:linear-gradient(160deg,var(--g1),#4c1d95 60%,#6d28d9);border:none;color:#fff;display:flex;flex-direction:column}
+.bt-lg::before{content:'';position:absolute;inset:0;pointer-events:none;background-image:linear-gradient(rgba(255,255,255,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.05) 1px,transparent 1px);background-size:34px 34px;opacity:.6}
+.bt-lg .bt-ico{background:rgba(255,255,255,.14)}
+.bt-lg .bt-ico svg{color:#fff}
+.bt-lg h3{color:#fff;font-size:1.18rem;position:relative}
+.bt-lg p{color:rgba(255,255,255,.72);position:relative;margin-bottom:18px}
+.cmp{position:relative;margin-top:auto;display:flex;flex-direction:column;gap:9px}
+.cmp-row{display:flex;align-items:flex-start;gap:11px;padding:12px 14px;border-radius:11px;font-size:.8rem;line-height:1.5}
+.cmp-no{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1)}
+.cmp-yes{background:rgba(196,181,253,.16);border:1px solid rgba(196,181,253,.32)}
+.cmp-b{width:20px;height:20px;border-radius:6px;flex-shrink:0;display:flex;align-items:center;justify-content:center;margin-top:1px}
+.cmp-no .cmp-b{background:rgba(255,255,255,.12)}.cmp-no .cmp-b svg{width:11px;height:11px;color:#fca5a5}
+.cmp-yes .cmp-b{background:var(--g5)}.cmp-yes .cmp-b svg{width:11px;height:11px;color:var(--g1)}
+.cmp strong{display:block;font-weight:800;color:#fff;margin-bottom:1px}
+.cmp span{color:rgba(255,255,255,.68)}
+
+/* ── PIPELINE (stepper horizontal) ── */
+#pipeline{background:var(--bg)}
+.stepper{position:relative;display:grid;grid-template-columns:repeat(5,1fr);gap:14px;margin-top:8px}
+.stepper::before{content:'';position:absolute;top:26px;left:8%;right:8%;height:2px;background:linear-gradient(90deg,var(--g5),var(--g3));z-index:0}
+.pstep{position:relative;z-index:1;text-align:center}
+.pnode{width:54px;height:54px;border-radius:16px;margin:0 auto 16px;background:linear-gradient(140deg,var(--g3),#5b21b6);display:flex;align-items:center;justify-content:center;color:#fff;box-shadow:0 8px 20px rgba(109,40,217,.28);position:relative}
+.pnode svg{width:23px;height:23px}
+.pnode-n{position:absolute;top:-7px;right:-7px;width:22px;height:22px;border-radius:50%;background:#fff;border:2px solid var(--g3);color:var(--g2);font-size:.68rem;font-weight:800;display:flex;align-items:center;justify-content:center}
+.pstep h3{font-size:.9rem;font-weight:800;color:var(--dark);margin-bottom:6px}
+.pchip{display:inline-block;background:var(--gp);color:var(--g2);font-size:.58rem;font-weight:800;letter-spacing:.5px;text-transform:uppercase;padding:2px 8px;border-radius:50px;border:1px solid var(--gb);margin-bottom:8px}
+.pstep p{font-size:.79rem;color:var(--muted);line-height:1.6;padding:0 6px}
+
+/* ── POR DENTRO (showcase) ── */
+#produto{background:var(--white)}
+.show-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.show-card{border:1px solid var(--bdr);border-radius:16px;overflow:hidden;background:var(--white);transition:all var(--t)}
+.show-card:hover{box-shadow:var(--sh);border-color:var(--gb);transform:translateY(-3px)}
+.show-head{padding:20px 22px 0}
+.show-head .stag{font-size:.6rem;font-weight:800;text-transform:uppercase;letter-spacing:1px;color:var(--g2);margin-bottom:6px;display:block}
+.show-head h3{font-size:1.02rem;font-weight:800;color:var(--dark);margin-bottom:5px}
+.show-head p{font-size:.82rem;color:var(--muted);line-height:1.6;margin-bottom:16px}
+.show-pane{background:var(--bg);border-top:1px solid var(--bdr);padding:20px 22px}
+.show-span{grid-column:span 2}
+/* screenshots reais do sistema (Figma) */
+.show-shot{border:1px solid var(--bdr);border-radius:11px;overflow:hidden;background:#fff;box-shadow:0 8px 22px rgba(46,16,101,.10);line-height:0}
+.show-shot img{width:100%;height:auto;display:block}
+
+/* slider horizontal do produto */
+.prod-slider{position:relative;overflow:hidden;max-width:820px;margin:0 auto}
+.prod-track{display:flex;transition:transform .6s cubic-bezier(.4,0,.2,1);will-change:transform}
+.prod-item{flex-shrink:0;width:100%;padding:0 10px;display:flex}
+.prod-item .show-card{width:100%}
+.prod-nav{display:flex;align-items:center;justify-content:center;gap:14px;margin-top:28px}
+.prod-btn{background:var(--white);border:1px solid var(--gb);border-radius:50%;width:40px;height:40px;display:flex;align-items:center;justify-content:center;color:var(--g2);cursor:pointer;transition:all var(--t);box-shadow:0 4px 12px rgba(46,16,101,.08)}
+.prod-btn:hover{background:var(--g3);border-color:var(--g3);color:#fff;transform:scale(1.05)}
+.prod-btn svg{width:17px;height:17px}
+.prod-dots{display:flex;gap:8px;align-items:center}
+.prod-dot{width:8px;height:8px;border-radius:50%;background:var(--gb);cursor:pointer;transition:all var(--t);border:none;padding:0}
+.prod-dot.active{background:var(--g3);width:24px;border-radius:4px}
+
+/* ── TRUST BAR (parceria) ── */
+.trust{background:var(--white);border-top:1px solid var(--bdr);border-bottom:1px solid var(--bdr);padding:48px 5.5%;position:relative;overflow:hidden}
+.trust::before{content:'';position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse 40% 60% at 50% 50%,rgba(124,58,237,.05),transparent 70%)}
+.trust-in{max-width:1160px;margin:0 auto;display:flex;flex-direction:row;align-items:center;justify-content:center;gap:52px;flex-wrap:wrap;position:relative}
+.trust-vdiv{width:1.5px;height:72px;background:linear-gradient(180deg,transparent 0%,var(--bdr) 20%,var(--g4) 50%,var(--bdr) 80%,transparent 100%);flex-shrink:0;border-radius:2px}
+.trust-logo-link{display:inline-flex;align-items:center;justify-content:center;transition:transform var(--t)}
+.trust-logo-link:hover{transform:translateY(-2px) scale(1.03)}
+.trust-logo{object-fit:contain;height:72px;width:auto;transition:filter var(--t)}
+.trust-logo-link:hover .trust-logo{filter:drop-shadow(0 4px 12px rgba(124,58,237,.18))}
+.trust-logo-nuven{height:76px}
+.trust-logo-ifce{height:96px}
+.trust-logo-embrapii{height:80px}
+.trust-logo-sebrae{height:74px}
+
+/* ── NÚMEROS ── */
+.nums-wrap{background:linear-gradient(135deg,var(--g1),#4c1d95 55%,var(--g3));padding:60px 5.5%;position:relative;overflow:hidden}
+.nums-wrap::before{content:'';position:absolute;inset:0;opacity:.06;background-image:linear-gradient(rgba(255,255,255,.9) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.9) 1px,transparent 1px);background-size:52px 52px}
+.nums-grid{max-width:1160px;margin:0 auto;position:relative;display:grid;grid-template-columns:repeat(4,1fr);background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.09);border-radius:18px;overflow:hidden;backdrop-filter:blur(6px)}
+.nc{padding:34px 24px;text-align:center;border-right:1px solid rgba(255,255,255,.08);transition:background var(--t)}
+.nc:last-child{border-right:none}
+.nc:hover{background:rgba(255,255,255,.09)}
+.nv{font-size:2.7rem;font-weight:800;letter-spacing:-1.2px;background:linear-gradient(135deg,#fff,var(--g5));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;line-height:1}
+.nl{font-size:.78rem;color:rgba(255,255,255,.62);margin-top:8px;line-height:1.5}
+
+/* mini gerador */
+.gen-steps{display:flex;align-items:center;margin-bottom:14px}
+.gen-s{width:26px;height:26px;border-radius:50%;font-size:.66rem;font-weight:800;display:flex;align-items:center;justify-content:center;background:#eae2fb;color:var(--g3);flex-shrink:0}
+.gen-s.done{background:var(--g3);color:#fff}
+.gen-l{flex:1;height:2px;background:#e6ddf7}.gen-l.on{background:var(--g3)}
+.gen-fields{display:flex;flex-direction:column;gap:9px}
+.gen-f{background:#fff;border:1px solid var(--bdr);border-radius:9px;padding:10px 13px;font-size:.78rem;color:var(--txt);display:flex;justify-content:space-between;align-items:center}
+.gen-f b{color:var(--muted);font-weight:600;font-size:.72rem}
+.gen-f .val{font-weight:700;color:var(--g2)}
+.gen-btn{margin-top:11px;background:var(--g3);color:#fff;text-align:center;padding:10px;border-radius:9px;font-size:.8rem;font-weight:700}
+
+/* mini tabela */
+.tbl{width:100%;border-collapse:collapse;font-size:.76rem}
+.tbl th{text-align:left;color:var(--muted);font-weight:700;font-size:.66rem;text-transform:uppercase;letter-spacing:.5px;padding:0 0 10px;border-bottom:1px solid var(--bdr)}
+.tbl td{padding:11px 0;border-bottom:1px solid var(--bdr);color:var(--txt)}
+.tbl tr:last-child td{border-bottom:none}
+.st{font-size:.62rem;font-weight:800;padding:3px 9px;border-radius:50px}
+.st.ap{background:#dcfce7;color:#15803d}.st.pd{background:#fef3c7;color:#b45309}.st.rv{background:var(--gp);color:var(--g2)}
+
+/* preview conteúdo gerado */
+.cprev{display:flex;gap:14px}
+.cprev-img{width:104px;flex-shrink:0;border-radius:10px;background:linear-gradient(135deg,#7c3aed,#c026d3);position:relative;overflow:hidden}
+.cprev-img::after{content:'';position:absolute;inset:0;background:radial-gradient(circle at 30% 25%,rgba(255,255,255,.3),transparent 55%)}
+.cprev-body{flex:1}
+.cprev-body .cl{height:8px;border-radius:5px;background:#eae3f6;margin-bottom:7px}
+.cprev-body .cl.a{width:88%}.cprev-body .cl.b{width:96%}.cprev-body .cl.c{width:70%}
+.cprev-tags{display:flex;gap:5px;margin-top:11px}
+.ctag{font-size:.6rem;font-weight:700;padding:3px 9px;border-radius:50px;background:#fff;border:1px solid var(--gb);color:var(--g2)}
+
+/* chat edição */
+.chat{display:flex;flex-direction:column;gap:9px}
+.msg{max-width:82%;padding:10px 13px;border-radius:13px;font-size:.79rem;line-height:1.55}
+.msg.bot{background:#fff;border:1px solid var(--bdr);align-self:flex-start;border-bottom-left-radius:3px}
+.msg.usr{background:var(--g3);color:#fff;align-self:flex-end;border-bottom-right-radius:3px}
+
+/* ── PERFIS ── */
+#perfis{background:var(--bg)}
+.pf-g{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.pf{background:var(--white);border:1px solid var(--bdr);border-radius:16px;padding:28px;transition:all var(--t);position:relative;overflow:hidden}
+.pf:hover{box-shadow:var(--sh);border-color:var(--gb);transform:translateY(-3px)}
+.pf-head{display:flex;align-items:center;gap:13px;margin-bottom:16px}
+.pf-ico{width:46px;height:46px;border-radius:13px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.pf-adm .pf-ico{background:linear-gradient(135deg,var(--g3),#5b21b6)}
+.pf-ges .pf-ico{background:linear-gradient(135deg,#c026d3,#9333ea)}
+.pf-ico svg{width:22px;height:22px;color:#fff}
+.pf-tag{font-size:.6rem;font-weight:800;text-transform:uppercase;letter-spacing:.8px;color:var(--muted)}
+.pf-head h3{font-size:1.1rem;font-weight:800;color:var(--dark)}
+.pf-lead{font-size:.85rem;color:var(--muted);line-height:1.7;margin-bottom:16px}
+.pf-list{list-style:none;display:flex;flex-direction:column;gap:9px}
+.pf-list li{display:flex;align-items:flex-start;gap:9px;font-size:.83rem;color:var(--txt);line-height:1.5}
+.pf-ck{width:19px;height:19px;border-radius:6px;background:var(--gp);flex-shrink:0;display:flex;align-items:center;justify-content:center;margin-top:1px}
+.pf-ck svg{width:11px;height:11px;color:var(--g2)}
+
+/* ── TECNOLOGIAS ── */
+#tecnologias{background:var(--white)}
+.tstack{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.tcat{background:var(--bg);border:1px solid var(--bdr);border-radius:14px;padding:22px;transition:all var(--t)}
+.tcat:hover{transform:translateY(-2px);box-shadow:var(--sh);border-color:var(--gb);background:var(--white)}
+.tcat-head{display:flex;align-items:center;gap:11px;margin-bottom:14px}
+.tcat-ico{width:38px;height:38px;border-radius:10px;background:var(--gp);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.tcat-ico svg{width:18px;height:18px;color:var(--g2)}
+.tcat-title{font-size:.92rem;font-weight:800;color:var(--dark)}
+.tcat-sub{font-size:.72rem;color:var(--muted)}
+.tbs{display:flex;flex-wrap:wrap;gap:6px}
+.tb{padding:5px 12px;border-radius:50px;font-size:.75rem;font-weight:700;background:var(--white);border:1px solid var(--gb);color:var(--g2)}
+.tcat:hover .tb{background:var(--gp)}
+
+/* ── CTA ── */
+#acesso{background:var(--bg);padding-bottom:110px}
+.cta{max-width:1000px;margin:0 auto;background:linear-gradient(150deg,var(--g1),#4c1d95 55%,#7c3aed);border-radius:26px;padding:60px 56px;position:relative;overflow:hidden;display:grid;grid-template-columns:1.3fr 1fr;gap:40px;align-items:center;box-shadow:0 30px 70px rgba(46,16,101,.3)}
+.cta::before{content:'';position:absolute;inset:0;pointer-events:none;background-image:linear-gradient(rgba(255,255,255,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.05) 1px,transparent 1px);background-size:40px 40px}
+.cta-orb{position:absolute;width:280px;height:280px;border-radius:50%;background:radial-gradient(circle,rgba(192,38,211,.5),transparent 70%);filter:blur(50px);top:-80px;right:-40px;pointer-events:none}
+.cta-l{position:relative}
+.cta-tag{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.13);border:1px solid rgba(255,255,255,.2);color:#fff;font-size:.68rem;font-weight:800;letter-spacing:1px;text-transform:uppercase;padding:5px 14px;border-radius:50px;margin-bottom:16px}
+.cta h2{font-size:clamp(1.6rem,2.6vw,2.2rem);font-weight:800;color:#fff;line-height:1.14;letter-spacing:-.5px;margin-bottom:12px}
+.cta p{color:rgba(255,255,255,.76);line-height:1.76;font-size:.93rem;max-width:440px}
+.cta-r{position:relative;display:flex;flex-direction:column;gap:11px}
+.cta-btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;padding:15px 24px;border-radius:12px;font-weight:800;font-size:.94rem;text-decoration:none;transition:all var(--t)}
+.cta-btn.pri{background:#fff;color:var(--g1);box-shadow:0 8px 24px rgba(0,0,0,.2)}
+.cta-btn.pri:hover{transform:translateY(-2px);box-shadow:0 12px 30px rgba(0,0,0,.3)}
+.cta-btn.sec{background:rgba(255,255,255,.1);color:#fff;border:1px solid rgba(255,255,255,.28)}
+.cta-btn.sec:hover{background:rgba(255,255,255,.18)}
+
+/* ── FOOTER ── */
+footer{background:var(--dark);color:rgba(255,255,255,.5);padding:56px 5.5% 30px}
+.ft{max-width:1160px;margin:0 auto}
+.ft-top{display:grid;grid-template-columns:2fr 1fr 1fr 1.2fr;gap:40px;margin-bottom:38px}
+.ft-brand{margin-bottom:14px}
+.fb p{font-size:.82rem;line-height:1.75;max-width:280px}
+.ft-logos{display:flex;align-items:center;gap:18px;margin-top:18px;flex-wrap:wrap}
+.ft-logos img{height:30px;width:auto;filter:brightness(0) invert(1);opacity:.55;transition:opacity var(--t)}
+.ft-logos img:hover{opacity:.9}
+.fc2 h4{color:#fff;font-size:.78rem;font-weight:800;margin-bottom:13px}
+.fc2 ul{list-style:none;display:flex;flex-direction:column;gap:8px}
+.fc2 ul a{color:rgba(255,255,255,.5);font-size:.82rem;text-decoration:none;transition:color var(--t)}
+.fc2 ul a:hover{color:var(--g5)}
+.ft-bot{border-top:1px solid rgba(255,255,255,.09);padding-top:20px;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:10px;font-size:.76rem}
+.ft-bot .logo-word{font-size:.95rem}
+
+/* ── RESPONSIVE ── */
+@media(max-width:960px){
+  .nav-links{display:none}
+  .hbg{display:flex}
+  .nav-links.open{display:flex;flex-direction:column;position:absolute;top:66px;left:0;right:0;background:var(--white);padding:16px 5.5%;border-bottom:1px solid var(--bdr);box-shadow:0 10px 24px rgba(0,0,0,.07);z-index:999;gap:4px}
+  .hero-grid{grid-template-columns:1fr;gap:48px}
+  .hero-visual{max-width:520px;margin:0 auto;width:100%}
+  .bento{grid-template-columns:1fr 1fr}
+  .bt-lg{grid-column:span 2;grid-row:auto}
+  .stepper{grid-template-columns:1fr 1fr;gap:26px}
+  .stepper::before{display:none}
+  .show-grid{grid-template-columns:1fr}
+  .show-span{grid-column:auto}
+  .pf-g,.cta,.tstack{grid-template-columns:1fr}
+  .ft-top{grid-template-columns:1fr 1fr}
+  .cta{padding:44px 34px}
+  .nums-grid{grid-template-columns:1fr 1fr}
+  .nc:nth-child(2){border-right:none}
+  .nc:nth-child(-n+2){border-bottom:1px solid rgba(255,255,255,.08)}
+  .trust-in{gap:28px}
+  .trust-vdiv{display:none}
+  .trust-logo{height:54px}
+  .trust-logo-nuven{height:56px}
+  .trust-logo-ifce{height:70px}
+  .trust-logo-embrapii{height:60px}
+  .trust-logo-sebrae{height:56px}
+}
+@media(max-width:600px){
+  section{padding:66px 5.5%}
+  .bento,.tstack,.ft-top{grid-template-columns:1fr}
+  .bt-lg{grid-column:auto}
+  .stepper{grid-template-columns:1fr}
+  .float-chip{display:none}
+  .nums-grid{grid-template-columns:1fr}
+  .nc{border-right:none;border-bottom:1px solid rgba(255,255,255,.08)}
+  .nc:last-child{border-bottom:none}
+  .nv{font-size:2.3rem}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="#hero" class="logo">
+    <img src="assets/maia-logo.png" alt="MAIA — Multimodal AI Assistant" class="logo-img">
+  </a>
+  <ul class="nav-links" id="nl">
+    <li><a href="#sobre">Sobre</a></li>
+    <li><a href="#pipeline">Pipeline</a></li>
+    <li><a href="#produto">O produto</a></li>
+    <li><a href="#perfis">Perfis</a></li>
+    <li><a href="#tecnologias">Tecnologias</a></li>
+  </ul>
+  <a href="#acesso" class="nav-cta">Fale com o NUVEN</a>
+  <button class="hbg" id="hbg" aria-label="Menu" onclick="toggleNav()"><span></span><span></span><span></span></button>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-grid">
+    <div class="hero-copy">
+      <div class="h-badge"><span class="pdot"></span>Um produto do NUVEN · IFCE</div>
+      <h1 class="hero-h1">Posts para redes sociais, prontos e <em>com a cara da sua marca</em>.</h1>
+      <p class="hero-p">Você dá o tema e as diretrizes da campanha e o MAIA devolve o post completo, com texto e arte, no tom e na identidade da sua marca. Depois é só revisar, pedir os ajustes que quiser e publicar.</p>
+      <div class="hero-btns">
+        <a href="#produto" class="bw">Ver o produto
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+        <a href="#pipeline" class="bghost">Como funciona</a>
+      </div>
+    </div>
+
+    <!-- TELAS REAIS (LOGIN) -->
+    <div class="hero-visual">
+      <div class="shot-stack">
+        <img class="shot-back" src="assets/telas/login2.png" alt="" aria-hidden="true" loading="lazy">
+        <img class="shot-front" src="assets/telas/login1.png" alt="Tela de login do MAIA" loading="lazy">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST BAR — Parceria institucional -->
+<div class="trust">
+  <div class="trust-in">
+    <a href="https://www.instagram.com/labnuven/" target="_blank" rel="noopener" class="trust-logo-link" title="NUVEN — Núcleo de Visão Computacional e Engenharia">
+      <img src="assets/nuven.svg" alt="NUVEN" class="trust-logo trust-logo-nuven">
+    </a>
+    <a href="https://www.ifce.edu.br/" target="_blank" rel="noopener" class="trust-logo-link" title="Instituto Federal do Ceará">
+      <img src="assets/ifce-logo.jpg" alt="IFCE" class="trust-logo trust-logo-ifce">
+    </a>
+    <div class="trust-vdiv" aria-hidden="true"></div>
+    <a href="https://embrapii.org.br/" target="_blank" rel="noopener" class="trust-logo-link" title="EMBRAPII">
+      <img src="assets/embrapii-horizontal.jpg" alt="EMBRAPII" class="trust-logo trust-logo-embrapii">
+    </a>
+    <a href="https://sebrae.com.br/" target="_blank" rel="noopener" class="trust-logo-link" title="SEBRAE">
+      <img src="assets/sebrae.svg" alt="SEBRAE" class="trust-logo trust-logo-sebrae">
+    </a>
+  </div>
+</div>
+
+<!-- NÚMEROS -->
+<div class="nums-wrap">
+  <div class="nums-grid r">
+    <div class="nc"><div class="nv" data-count="5">0</div><div class="nl">Etapas no fluxo<br>de geração</div></div>
+    <div class="nc"><div class="nv" data-count="4">0</div><div class="nl">Canais atendidos<br>(Instagram, LinkedIn, Facebook e blog)</div></div>
+    <div class="nc"><div class="nv" data-count="6">0</div><div class="nl">Categorias de conteúdo<br>na base de inspiração</div></div>
+    <div class="nc"><div class="nv" data-count="2">0</div><div class="nl">Perfis de acesso<br>com permissões próprias</div></div>
+  </div>
+</div>
+
+<!-- SOBRE / BENTO -->
+<section id="sobre">
+  <div class="c">
+    <div class="hc">
+      <span class="tag">O Projeto</span>
+      <h2 class="sh">Conteúdo de marca, <em>do briefing à arte</em>.</h2>
+      <p class="sp">O MAIA cuida da criação de conteúdo do começo ao fim, do texto até a arte final, sempre respeitando o tom e a identidade visual da marca.</p>
+    </div>
+    <div class="bento">
+      <!-- Feature grande: decisão arquitetural -->
+      <div class="bt bt-lg r">
+        <div class="bt-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></div>
+        <h3>Por que HTML/CSS, e não imagem por IA?</h3>
+        <p>Quando a imagem era gerada direto por IA, o texto em português saía ilegível. Por isso o MAIA monta cada arte em HTML/CSS e só depois transforma em imagem, com o texto sempre nítido.</p>
+        <div class="cmp">
+          <div class="cmp-row cmp-no">
+            <span class="cmp-b"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg></span>
+            <div><strong>Geração direta de imagem</strong><span>Stable Diffusion ou DALL-E, com a tipografia quebrada.</span></div>
+          </div>
+          <div class="cmp-row cmp-yes">
+            <span class="cmp-b"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span>
+            <div><strong>Camada de estilo + layout em HTML/CSS</strong><span>Controle total da composição e do texto.</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="bt r">
+        <div class="bt-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20a8 8 0 1 0 0-16 8 8 0 0 0 0 16z"/><path d="M12 8v4l3 2"/></svg></div>
+        <h3>Do briefing ao post</h3>
+        <p>Você entra com o tema, o objetivo e as diretrizes. A legenda e a arte saem prontas, no tom da marca e da rede.</p>
+      </div>
+      <div class="bt r">
+        <div class="bt-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg></div>
+        <h3>Vários agentes, um fluxo</h3>
+        <p>O trabalho se divide entre texto, estilo e montagem da arte, tudo acontecendo num fluxo só.</p>
+      </div>
+      <div class="bt r">
+        <div class="bt-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 7L12 3 4 7v10l8 4 8-4V7z"/><path d="M12 3v18M4 7l8 4 8-4"/></svg></div>
+        <h3>Datalake da marca</h3>
+        <p>Logos, paletas, fontes e guidelines guiam cada peça segundo o manual do cliente.</p>
+      </div>
+      <div class="bt r">
+        <div class="bt-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l2.5 6L21 9l-5 4 2 7-6-4-6 4 2-7-5-4 6.5-1z"/></svg></div>
+        <h3>Inspiração viral</h3>
+        <p>O MAIA busca referências reais parecidas com a ideia do post para inspirar cada criação.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PIPELINE -->
+<section id="pipeline">
+  <div class="c">
+    <div class="hc ctr">
+      <span class="tag">Pipeline de Geração</span>
+      <h2 class="sh">Cinco etapas, <em>um post pronto</em>.</h2>
+      <p class="sp">Do briefing à arte aprovada, cada etapa fica a cargo de um agente especializado.</p>
+    </div>
+    <div class="stepper">
+      <div class="pstep r">
+        <div class="pnode"><span class="pnode-n">1</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
+        <span class="pchip">Chatbot</span>
+        <h3>Entrada de dados</h3>
+        <p>Tema, objetivo, contexto e diretrizes da campanha.</p>
+      </div>
+      <div class="pstep r">
+        <div class="pnode"><span class="pnode-n">2</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7V4h16v3M9 20h6M12 4v16"/></svg></div>
+        <span class="pchip">Texto</span>
+        <h3>Gerador de Conteúdo</h3>
+        <p>Legendas no tom da marca, plataforma e objetivo.</p>
+      </div>
+      <div class="pstep r">
+        <div class="pnode"><span class="pnode-n">3</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14a9 3 0 0 0 18 0V5"/><path d="M3 12a9 3 0 0 0 18 0"/></svg></div>
+        <span class="pchip">Assets</span>
+        <h3>Consulta ao Datalake</h3>
+        <p>Logos, cores, fontes e guidelines da identidade.</p>
+      </div>
+      <div class="pstep r">
+        <div class="pnode"><span class="pnode-n">4</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></div>
+        <span class="pchip">Multi-agente</span>
+        <h3>Image Builder</h3>
+        <p>Classifica tipo, define estilo e gera HTML/CSS.</p>
+      </div>
+      <div class="pstep r">
+        <div class="pnode"><span class="pnode-n">5</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></div>
+        <span class="pchip">Revisão humana</span>
+        <h3>Aprovação Visual</h3>
+        <p>Você pede os ajustes conversando, até ficar do jeito certo.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- POR DENTRO / PRODUTO -->
+<section id="produto">
+  <div class="c">
+    <div class="hc ctr">
+      <span class="tag">O Produto por Dentro</span>
+      <h2 class="sh">A plataforma MAIA em uso.</h2>
+      <p class="sp">Do formulário de geração ao conteúdo aprovado, com as telas reais do sistema.</p>
+    </div>
+    <div class="prod-slider r">
+      <div class="prod-track" id="prodTrack">
+
+        <!-- Gerador -->
+        <div class="prod-item">
+          <div class="show-card">
+            <div class="show-head">
+              <span class="stag">Gerar conteúdo</span>
+              <h3>Fluxo em etapas</h3>
+              <p>Um passo a passo leva você do briefing até a arte final, sem pular nenhuma etapa.</p>
+            </div>
+            <div class="show-pane">
+              <div class="show-shot"><img src="assets/telas/c1_stepper.png" alt="Tela Gerar conteúdo: passo a passo com seleção de texto gerado" loading="lazy"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Conteúdo gerado -->
+        <div class="prod-item">
+          <div class="show-card">
+            <div class="show-head">
+              <span class="stag">Conteúdo gerado</span>
+              <h3>Arte + legenda</h3>
+              <p>A peça já chega com imagem, texto e os elementos da sua marca no lugar.</p>
+            </div>
+            <div class="show-pane">
+              <div class="show-shot"><img src="assets/telas/c2_arte.png" alt="Tela Editar conteúdo: arte gerada, legenda e ações de aprovar, enviar para análise e download" loading="lazy"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Aprovação (chat) -->
+        <div class="prod-item">
+          <div class="show-card">
+            <div class="show-head">
+              <span class="stag">Ciclo de aprovação</span>
+              <h3>Edite conversando</h3>
+              <p>Peça os ajustes escrevendo como você falaria, e o MAIA mexe só no que você apontou.</p>
+            </div>
+            <div class="show-pane">
+              <div class="show-shot"><img src="assets/telas/c3_chat.png" alt="Tela Solicitar ajustes de imagem: edição do post por conversa em linguagem natural" loading="lazy"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Registro / tabela -->
+        <div class="prod-item">
+          <div class="show-card">
+            <div class="show-head">
+              <span class="stag">Conteúdos gerados</span>
+              <h3>Registro e status</h3>
+              <p>Cada peça fica registrada e você acompanha o status, da revisão até a aprovação.</p>
+            </div>
+            <div class="show-pane">
+              <div class="show-shot"><img src="assets/telas/c4_tabela.png" alt="Tela Gerenciar conteúdos: lista de conteúdos com autor, datas e status de revisão" loading="lazy"></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="prod-nav">
+        <button class="prod-btn" id="prodPrev" aria-label="Anterior">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+        </button>
+        <div class="prod-dots" id="prodDots"></div>
+        <button class="prod-btn" id="prodNext" aria-label="Próximo">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PERFIS -->
+<section id="perfis">
+  <div class="c">
+    <div class="hc ctr">
+      <span class="tag">Perfis de Uso</span>
+      <h2 class="sh">Dois perfis, permissões distintas.</h2>
+      <p class="sp">O sistema opera com papéis aplicados a todas as áreas da plataforma.</p>
+    </div>
+    <div class="pf-g">
+      <div class="pf pf-adm r">
+        <div class="pf-head">
+          <div class="pf-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg></div>
+          <div><span class="pf-tag">Adm</span><h3>Administrador</h3></div>
+        </div>
+        <p class="pf-lead">Gestão da plataforma. Acumula as permissões do Gestor de Conteúdo e opera as áreas administrativas.</p>
+        <ul class="pf-list">
+          <li><span class="pf-ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span>Cadastrar, ativar e desativar usuários</li>
+          <li><span class="pf-ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span>Gerenciar fontes de dados</li>
+          <li><span class="pf-ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span>Consultar o registro de ações</li>
+          <li><span class="pf-ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span>Configurações da empresa e do datalake</li>
+        </ul>
+      </div>
+      <div class="pf pf-ges r">
+        <div class="pf-head">
+          <div class="pf-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"/></svg></div>
+          <div><span class="pf-tag">Conteúdo</span><h3>Gestor de Conteúdo</h3></div>
+        </div>
+        <p class="pf-lead">Uso operacional. Cria e refina conteúdo, acompanha tendências e gerencia a própria conta.</p>
+        <ul class="pf-list">
+          <li><span class="pf-ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span>Gerar e criar posts manualmente</li>
+          <li><span class="pf-ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span>Refinar e exportar conteúdos gerados</li>
+          <li><span class="pf-ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span>Visualizar tendências por rede social</li>
+          <li><span class="pf-ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span>Adicionar imagens ao datalake</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TECNOLOGIAS -->
+<section id="tecnologias">
+  <div class="c">
+    <div class="hc ctr">
+      <span class="tag">Stack</span>
+      <h2 class="sh">A base técnica da MAIA.</h2>
+      <p class="sp">Modelos, orquestração e infraestrutura que sustentam a geração multimodal.</p>
+    </div>
+    <div class="tstack">
+      <div class="tcat r">
+        <div class="tcat-head"><div class="tcat-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2zM9 21h6"/></svg></div><div><div class="tcat-title">LLMs & Agentes</div><div class="tcat-sub">Texto e orquestração</div></div></div>
+        <div class="tbs"><span class="tb">Gemini 2.5 Pro</span><span class="tb">OpenAI GPT</span><span class="tb">LangChain</span></div>
+      </div>
+      <div class="tcat r">
+        <div class="tcat-head"><div class="tcat-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></div><div><div class="tcat-title">Geração de Imagem</div><div class="tcat-sub">Fundo do post</div></div></div>
+        <div class="tbs"><span class="tb">Gemini Flash Image</span><span class="tb">GPT Image</span><span class="tb">HTML/CSS render</span></div>
+      </div>
+      <div class="tcat r">
+        <div class="tcat-head"><div class="tcat-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.3-4.3"/></svg></div><div><div class="tcat-title">Avaliação & Busca</div><div class="tcat-sub">Qualidade e inspiração</div></div></div>
+        <div class="tbs"><span class="tb">OpenAI CLIP</span><span class="tb">Embeddings 768d</span><span class="tb">mpnet multilingual</span></div>
+      </div>
+      <div class="tcat r">
+        <div class="tcat-head"><div class="tcat-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14a9 3 0 0 0 18 0V5"/></svg></div><div><div class="tcat-title">Dados</div><div class="tcat-sub">Assets da marca</div></div></div>
+        <div class="tbs"><span class="tb">Datalake</span><span class="tb">MinIO</span><span class="tb">base-inspirations</span></div>
+      </div>
+      <div class="tcat r">
+        <div class="tcat-head"><div class="tcat-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 7L12 3 4 7v10l8 4 8-4V7zM12 3v18"/></svg></div><div><div class="tcat-title">Orquestração</div><div class="tcat-sub">Pipeline & deploy</div></div></div>
+        <div class="tbs"><span class="tb">LangChain agents</span><span class="tb">Structured Outputs</span><span class="tb">Docker</span></div>
+      </div>
+      <div class="tcat r">
+        <div class="tcat-head"><div class="tcat-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div><div><div class="tcat-title">Pesquisa & MLOps</div><div class="tcat-sub">Fase exploratória</div></div></div>
+        <div class="tbs"><span class="tb">MLflow</span><span class="tb">DVC</span><span class="tb">Roboflow</span><span class="tb">n8n</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="acesso">
+  <div class="cta r">
+    <div class="cta-orb"></div>
+    <div class="cta-l">
+      <div class="cta-tag"><span class="pdot"></span>MAIA · NUVEN</div>
+      <h2>Marketing digital, no ritmo da IA.</h2>
+      <p>O MAIA é desenvolvido pelo NUVEN (Núcleo de Visão Computacional e Engenharia) no Polo de Inovação do IFCE, em parceria com EMBRAPII e SEBRAE.</p>
+    </div>
+    <div class="cta-r">
+      <a href="mailto:igor@nuven.ifce.edu.br" class="cta-btn pri">Fale com o NUVEN
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+      <a href="https://www.instagram.com/labnuven/" target="_blank" class="cta-btn sec">@labnuven no Instagram</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="ft">
+    <div class="ft-top">
+      <div class="fb">
+        <a href="#hero" class="logo-lockup ft-brand">
+          <img src="assets/maia-mark.png" alt="" class="lk-mark" aria-hidden="true">
+          <img src="assets/maia-word-white.png" alt="MAIA" class="lk-word">
+        </a>
+        <p>Multimodal AI Assistant. Geração automatizada de conteúdo visual e textual para redes sociais. NUVEN · Polo de Inovação IFCE.</p>
+        <div class="ft-logos">
+          <a href="https://www.instagram.com/labnuven/" target="_blank" rel="noopener" aria-label="NUVEN"><img src="assets/nuven.svg" alt="NUVEN"></a>
+          <a href="https://www.ifce.edu.br/" target="_blank" rel="noopener" aria-label="IFCE"><img src="assets/ifce-logo.jpg" alt="IFCE"></a>
+          <a href="https://embrapii.org.br/" target="_blank" rel="noopener" aria-label="EMBRAPII"><img src="assets/embrapii-horizontal.jpg" alt="EMBRAPII"></a>
+          <a href="https://sebrae.com.br/" target="_blank" rel="noopener" aria-label="SEBRAE"><img src="assets/sebrae.svg" alt="SEBRAE"></a>
+        </div>
+      </div>
+      <div class="fc2">
+        <h4>Projeto</h4>
+        <ul>
+          <li><a href="#sobre">Sobre</a></li>
+          <li><a href="#pipeline">Pipeline</a></li>
+          <li><a href="#produto">O produto</a></li>
+          <li><a href="#perfis">Perfis</a></li>
+          <li><a href="#tecnologias">Tecnologias</a></li>
+        </ul>
+      </div>
+      <div class="fc2">
+        <h4>Parceiros</h4>
+        <ul>
+          <li><a href="https://www.instagram.com/labnuven/" target="_blank">@labnuven</a></li>
+          <li><a href="https://polodeinovacao.ifce.edu.br/" target="_blank">Polo de Inovação IFCE</a></li>
+          <li><a href="https://embrapii.org.br/" target="_blank">EMBRAPII</a></li>
+          <li><a href="https://sebrae.com.br/" target="_blank">SEBRAE</a></li>
+        </ul>
+      </div>
+      <div class="fc2">
+        <h4>Contato</h4>
+        <ul>
+          <li><a href="mailto:igor@nuven.ifce.edu.br">igor@nuven.ifce.edu.br</a></li>
+          <li><a href="https://polodeinovacao.ifce.edu.br/" target="_blank">nuven.ifce.edu.br</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="ft-bot">
+      <p>© 2026 <span class="logo-word on-dark">maia</span> · NUVEN · Instituto Federal do Ceará.</p>
+      <p>Feito no Núcleo de Visão Computacional e Engenharia.</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+// NAV
+window.addEventListener('scroll',()=>document.getElementById('nav').classList.toggle('up',window.scrollY>24));
+function toggleNav(){document.getElementById('nl').classList.toggle('open')}
+document.querySelectorAll('#nl a').forEach(a=>a.addEventListener('click',()=>document.getElementById('nl').classList.remove('open')));
+// SCROLL REVEAL
+const ro=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');ro.unobserve(e.target)}})},{threshold:.08});
+document.querySelectorAll('.r').forEach((el,i)=>{el.style.transitionDelay=(i%5)*60+'ms';ro.observe(el)});
+
+// CONTADORES (count up)
+const co=new IntersectionObserver(es=>{es.forEach(e=>{
+  if(e.isIntersecting && !e.target.dataset.done){
+    e.target.dataset.done=1;
+    const target=parseInt(e.target.dataset.count,10);
+    const suf=e.target.dataset.suf||'';
+    let c=0; const step=Math.max(target/40,0.5);
+    const t=setInterval(()=>{c=Math.min(c+step,target);e.target.textContent=Math.round(c)+suf;if(c>=target)clearInterval(t);},22);
+  }
+})},{threshold:.4});
+document.querySelectorAll('[data-count]').forEach(el=>co.observe(el));
+
+// SLIDER — O Produto por Dentro
+(function(){
+  const track=document.getElementById('prodTrack');
+  const dotsWrap=document.getElementById('prodDots');
+  const prev=document.getElementById('prodPrev');
+  const next=document.getElementById('prodNext');
+  if(!track) return;
+  const items=track.querySelectorAll('.prod-item');
+  const total=items.length;
+  let current=0, timer;
+  function renderDots(){
+    dotsWrap.innerHTML='';
+    for(let i=0;i<total;i++){
+      const b=document.createElement('button');
+      b.className='prod-dot'+(i===current?' active':'');
+      b.setAttribute('aria-label','Slide '+(i+1));
+      b.addEventListener('click',()=>go(i,true));
+      dotsWrap.appendChild(b);
+    }
+  }
+  function update(){
+    const w=items[0].getBoundingClientRect().width;
+    track.style.transform='translateX(-'+(current*w)+'px)';
+    dotsWrap.querySelectorAll('.prod-dot').forEach((d,i)=>d.classList.toggle('active',i===current));
+  }
+  function go(i,manual){current=(i+total)%total;update();if(manual)restart();}
+  function autoplay(){timer=setInterval(()=>go(current+1),6000);}
+  function restart(){clearInterval(timer);autoplay();}
+  prev&&prev.addEventListener('click',()=>go(current-1,true));
+  next&&next.addEventListener('click',()=>go(current+1,true));
+  window.addEventListener('resize',update,{passive:true});
+  renderDots();update();autoplay();
+})();
+</script>
+</body>
+</html>
